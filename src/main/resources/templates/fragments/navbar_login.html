@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head lang="pt-br" th:replace="fragments/header :: header"></head>
+<body>
+	<!-- Main Navbar_login-->
+<div class="page-content d-flex align-items-stretch"
+	th:fragment="navbar_login">
+	<!-- Side Navbar -->
+	<nav class="side-navbar">
+		<!-- Sidebar Header-->
+		<div class="sidebar-header d-flex align-items-center">
+			<div class="avatar">
+				<img src="" alt=""
+					class="img-fluid rounded-circle">
+			</div>
+			<div class="title">	
+				<span sec:authentication="name" class="h4"></span>	
+				<p sec:authentication="principal.authorities"></p>		
+			</div>
+		</div>
+		
+		 <!-- Sidebar Navidation Menus--><span class="heading">Menu</span>
+         <ul class="list-unstyled">
+         	<sec:authorize access="hasAuthority('ADMIN')">
+				<li class="active">
+	         		<a href="index.html"> 
+	         			<i class="icon-form"></i>Templates 
+	         		</a>
+	         	</li>
+			</sec:authorize>
+
+
+          </ul>
+
+	</nav>
+	<div class="content-inner">
+		<!-- Page Header-->
+		<header class="page-header">
+			<div class="container-fluid">
+				<h2 class="no-margin-bottom">Dashboard</h2>
+			</div>
+		</header>
+
+		<!-- Page Footer-->
+		<div th:replace="fragments/footer :: footer"></div>
+
+	</div>
+</div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,24 @@
+<head th:fragment="header">
+	<meta charset="UTF-8"></meta>
+	
+	<link rel="stylesheet" media="screen"
+		th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" type="text/css" />
+	
+	<!-- Fontastic Custom icon font-->
+	<link rel="stylesheet" media="screen" th:href="@{/css/fontastic.css}" type="text/css" />
+	
+	<!-- Google fonts - Poppins -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" />
+		
+	<!-- Font Awesome CSS-->
+	<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css"/>
+	
+	
+	<!-- theme stylesheet-->
+	<link rel="stylesheet" id="theme-stylesheet"
+		th:href="@{/css/style.blue.css}" />
+	
+	<title th:text="${title} ? ${title} : 'default title'"></title>
+
+</head>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="pt-br" th:replace="fragments/header :: header"></head>
+<meta charset="UTF-8"></meta>
+
+<body>
+	<div class="page login-page">
+		<div class="container d-flex align-items-center">
+			<div class="form-holder has-shadow">
+				<div class="row">
+					<!-- Logo & Information Panel-->
+					<div class="col-lg-6">
+						<div class="info d-flex align-items-center">
+							<div class="content">
+								<div class="logo">
+									<h1>My CV</h1>
+								</div>
+								<p>Organize e customize seu currículo.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Form Panel    -->
+					<div class="col-lg-6 bg-white">
+						<div class="form d-flex align-items-center">
+							<div class="content">
+								<form id="login-form" method="POST" th:action="@{/login}">
+									<div class="form-group">
+										<input id="email" type="email" name="email" required class="input-material" placeholder="Email" /> 
+									</div>
+									<div class="form-group">
+										<input id="password" type="password" name="password" required class="input-material" placeholder="Senha"/>
+									</div>
+									<button class="btn btn-lg btn-primary btn-block" name="Submit"
+										value="Login" type="Submit" th:text="Login"></button>
+
+									<!-- This should be submit button but I replaced it with <a> for demo purposes-->
+								</form><br />
+								<div th:if="${param.error}" class="alert alert-danger label-material" role="alert">
+									Email ou senha inválidos!
+								</div><br />
+								<a href="#" class="forgot-pass">Esqueceu a senha?</a><br> 
+								<small>Criar uma conta? </small><a href="/registration" class="signup">Registre-se</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copyrights text-center">
+			<p>
+				<a href="/" class="external">My CV</a>
+			</p>
+		</div>
+	</div>
+
+</body>
+</html>

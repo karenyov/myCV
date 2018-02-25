@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="pt-br" th:replace="fragments/header :: header"></head>
+<meta charset="UTF-8"></meta>
+
+<body>
+	<div class="page login-page">
+		<div class="container d-flex align-items-center">
+			<div class="form-holder has-shadow">
+				<div class="row">
+					<!-- Logo & Information Panel-->
+					<div class="col-lg-6">
+						<div class="info d-flex align-items-center">
+							<div class="content">
+								<div class="logo">
+									<h1>My CV</h1>
+								</div>
+								<p>Organize e customize seu currículo.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Form Panel    -->
+					<div class="col-lg-6 bg-white">
+						<div class="form d-flex align-items-center">
+							<div class="content">
+								<form autocomplete="off" id="register-form" method="POST" th:action="@{/registration}" th:object="${user}" role="form">
+									<div class="form-group">
+										<input id="email" type="text" name="email" required
+											class="input-material" th:field="*{email}"
+											placeholder="Email" /> 
+										<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger validation-message label-material" role="alert">
+										</div>
+										
+									</div>
+									<div class="form-group">
+										<input id="password" type="password" name="password" required
+											class="input-material" th:field="*{password}"
+											placeholder="Senha" /> 										
+										<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger validation-message label-material" role="alert">
+										</div>
+									</div>
+									<div class="form-group terms-conditions">
+										<input id="license" type="checkbox" class="checkbox-template">
+										<label for="license">Agree the terms and policy</label>
+									</div>
+
+									<button type="submit" class="btn btn-primary btn-block">Registrar-se</button>
+								</form><br />
+								<div th:if="${successMessage}" th:utext="${successMessage}" class="alert alert-success label-material" role="alert">
+									
+								</div><br />								
+								<small>Já possui uma conta? </small><a href="login.html"
+									class="signup">Login</a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copyrights text-center">
+			<p>
+				<a href="/" class="external">My CV</a>
+			</p>
+		</div>
+	</div>
+</body>
+</html>
