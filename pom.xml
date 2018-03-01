@@ -109,6 +109,14 @@
 			<artifactId>jquery-cookie</artifactId>
 			<version>1.4.1-1</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.webjars.npm/popper.js -->
+		<dependency>
+		    <groupId>org.webjars.npm</groupId>
+		    <artifactId>popper.js</artifactId>
+		    <version>1.13.0</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

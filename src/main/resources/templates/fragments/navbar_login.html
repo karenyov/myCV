@@ -1,52 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head lang="pt-br" th:replace="fragments/header :: header"></head>
 <body>
 	<!-- Main Navbar_login-->
-<div class="page-content d-flex align-items-stretch"
-	th:fragment="navbar_login">
 	<!-- Side Navbar -->
-	<nav class="side-navbar">
+	<nav class="side-navbar" th:fragment="navbar_login">
 		<!-- Sidebar Header-->
 		<div class="sidebar-header d-flex align-items-center">
 			<div class="avatar">
-				<img src="" alt=""
-					class="img-fluid rounded-circle">
+				<img src="" alt="" class="img-fluid rounded-circle">
 			</div>
-			<div class="title">	
-				<span sec:authentication="name" class="h4"></span>	
-				<p sec:authentication="principal.authorities"></p>		
+			<div class="title">
+				<span sec:authentication="name" class="h4"></span>
+				<p sec:authentication="principal.authorities"></p>
 			</div>
 		</div>
-		
-		 <!-- Sidebar Navidation Menus--><span class="heading">Menu</span>
-         <ul class="list-unstyled">
-         	<sec:authorize access="hasAuthority('ADMIN')">
+
+		<!-- Sidebar Navidation Menus-->
+		<span class="heading">Menu</span>
+		<ul class="list-unstyled">
+			<div sec:authorize="hasAuthority('ROLE_ADMIN')">
 				<li class="active">
-	         		<a href="index.html"> 
-	         			<i class="icon-form"></i>Templates 
-	         		</a>
-	         	</li>
-			</sec:authorize>
-
-
-          </ul>
-
-	</nav>
-	<div class="content-inner">
-		<!-- Page Header-->
-		<header class="page-header">
-			<div class="container-fluid">
-				<h2 class="no-margin-bottom">Dashboard</h2>
+					<a href=""> 
+						<i class="icon-form"></i>Templates
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/admin/language/}"> 
+						<i class="fa fa-globe"></i>Idiomas
+					</a>
+				</li>
 			</div>
-		</header>
-
-		<!-- Page Footer-->
-		<div th:replace="fragments/footer :: footer"></div>
-
-	</div>
-</div>
+		</ul>
+	</nav>
+	
 </body>
 </html>
 
