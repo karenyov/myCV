@@ -24,6 +24,8 @@ public class Language implements Serializable {
 	@Column(unique = true)
 	private String code;
 
+	private Boolean active;
+
 	/**
 	 * @return the id
 	 */
@@ -67,6 +69,21 @@ public class Language implements Serializable {
 	 */
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	/**
+	 * @return the active
+	 */
+	public Boolean getActive() {
+		return active;
+	}
+
+	/**
+	 * @param active
+	 *            the active to set
+	 */
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 }

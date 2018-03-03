@@ -12,4 +12,8 @@ import com.project.myCv.model.Language;
 public interface LanguageService {
 
 	 public Page<Language> findAll(Pageable pageable);
+	 
+	 public Language findOne(Long id);
+	 
+	 public Language save(Language language);
 }

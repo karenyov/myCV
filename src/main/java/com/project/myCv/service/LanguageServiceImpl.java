@@ -26,9 +26,35 @@ public class LanguageServiceImpl implements LanguageService {
 	 */
 	@Override
 	public Page<Language> findAll(Pageable pageable) {
-		
+
 		Page<Language> languages = languageRepository.findAll(pageable);
 		return languages;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.project.myCv.service.LanguageService#findOne(java.lang.Long)
+	 */
+	@Override
+	public Language findOne(Long id) {
+		// TODO Auto-generated method stub
+		Language language = languageRepository.findOne(id);
+		return language;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.project.myCv.service.LanguageService#save(com.project.myCv.model.
+	 * Language)
+	 */
+	@Override
+	public Language save(Language language) {
+		// TODO Auto-generated method stub
+		languageRepository.save(language);
+		return language;
 	}
 
 }

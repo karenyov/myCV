@@ -30,7 +30,14 @@
 	                		<div class="col-lg-12">
 	                  			<div class="card">
 	                  				<div class="card-header d-flex align-items-center">
-				                      <h3 class="h4">Idiomas</h3>
+	                  					<div class="row col-sm-12">
+										  <div class="col col-md-8">
+										  	<h3 class="h4">Idiomas</h3>	
+										  </div>
+										  <div class="col-6 col-md-4">
+										  	<a href="" class="btn btn-primary">Novo Idioma</a>
+										  </div>
+										</div>
 				                    </div>
 				                    <div class="card-body">
 				                    	<div class="table-responsive">
@@ -40,6 +47,7 @@
 						                              <th>ID</th>
 						                              <th>Descrição</th>
 						                              <th>Ações</th>
+						                              <th>Ativo/Inativo</th>
 						                            </tr>
 				                          		</thead>
 				                          		<tbody>
@@ -52,10 +60,17 @@
 														    	<i class="fa fa-list"></i>
 														  	</button>
 														  	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-														    	<a class="dropdown-item" href="#" th:href="@{/admin//admin/language/edit/{id}(id=${language.id})}"><i class="fa fa-edit"></i> Editar</a>
-														    	<a class="dropdown-item" href="#"><i class="fa fa-trash-o"></i> Excluir</a>
+														    	<a class="dropdown-item" href="#" th:href="@{/admin/language/edit/{id}(id=${language.id})}"><i class="fa fa-edit"></i> Editar</a>
+														    	
+														    	<a class="dropdown-item" href="#"><i class="fa fa-check"></i> Ativar</a>
+														    	<a class="dropdown-item" href="#"><i class="fa fa-times"></i> Desativar</a>
 														  	</div>
 														</div>
+						                              </td>
+						                              <td>
+						                              	<span class="badge badge-pill badge-success">Ativo</span>
+						                              	<span class="badge badge-pill badge-danger">Inativo</span>
+						                              	
 						                              </td>
 						                            </tr>
 						                        </tbody>
