@@ -16,4 +16,6 @@ public interface LanguageService {
 	 public Language findOne(Long id);
 	 
 	 public Language save(Language language);
+	 
+	 public Page<Language> findByDescriptionContaining(String search, Pageable pageable);
 }

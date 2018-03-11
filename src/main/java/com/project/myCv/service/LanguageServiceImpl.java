@@ -26,9 +26,7 @@ public class LanguageServiceImpl implements LanguageService {
 	 */
 	@Override
 	public Page<Language> findAll(Pageable pageable) {
-
-		Page<Language> languages = languageRepository.findAll(pageable);
-		return languages;
+		return languageRepository.findAll(pageable);
 	}
 
 	/*
@@ -39,8 +37,7 @@ public class LanguageServiceImpl implements LanguageService {
 	@Override
 	public Language findOne(Long id) {
 		// TODO Auto-generated method stub
-		Language language = languageRepository.findOne(id);
-		return language;
+		return languageRepository.findOne(id);
 	}
 
 	/*
@@ -53,8 +50,17 @@ public class LanguageServiceImpl implements LanguageService {
 	@Override
 	public Language save(Language language) {
 		// TODO Auto-generated method stub
-		languageRepository.save(language);
-		return language;
+		language.setActive(true);
+		return languageRepository.save(language);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.project.myCv.service.LanguageService#findByDescription(java.lang.String, org.springframework.data.domain.Pageable)
+	 */
+	@Override
+	public Page<Language> findByDescriptionContaining(String search, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return languageRepository.findByDescriptionContaining(search, pageable);
 	}
 
 }

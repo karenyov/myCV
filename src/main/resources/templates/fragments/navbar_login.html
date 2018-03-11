@@ -23,7 +23,7 @@
 		<ul class="list-unstyled">
 			<div sec:authorize="hasAuthority('ROLE_ADMIN')">
 				<li class="active">
-					<a href=""> 
+					<a th:href="@{/admin/template/}"> 
 						<i class="icon-form"></i>Templates
 					</a>
 				</li>
