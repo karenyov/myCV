@@ -21,4 +21,4 @@ Go in File > Import > Maven > Existing Maven Project and click Next, select the 
 
 ### Database
 
-* Create your database in Mysql ou PostgreSQL and configure in application.properties.
+* Create your database in Mysql or PostgreSQL and configure in application.properties.
