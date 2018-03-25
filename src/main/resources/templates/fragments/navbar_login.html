@@ -33,6 +33,13 @@
 					</a>
 				</li>
 			</div>
+			<div sec:authorize="hasAuthority('ROLE_USER')">
+				<li>
+					<a th:href="@{/language/}"> 
+						<i class="fa fa-globe"></i>Meus Idiomas
+					</a>
+				</li>
+			</div>
 		</ul>
 	</nav>
 	

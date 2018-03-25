@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="pt-br" th:replace="fragments/header :: header"></head>
+<meta charset="UTF-8"></meta>
+<body>
+	<div class="page">
+		<div th:replace="fragments/navbar :: navbar"></div>
+      	<div class="page-content d-flex align-items-stretch"> 
+			<div th:replace="fragments/navbar_login :: navbar_login"></div>
+
+			<div class="content-inner">
+				<!-- Page Header-->
+				<header class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">Idiomas</h2>
+					</div>
+				</header>
+				<!-- Breadcrumb-->
+	            <div class="breadcrumb-holder container-fluid">
+	            	<ul class="breadcrumb">
+	              		<li class="breadcrumb-item"><a th:href="@{/dashboard/user}">Dashboard</a></li>
+	              		<li class="breadcrumb-item active">Meus Idiomas</li>
+	            	</ul>
+	          	</div>
+	          	
+	          	<!-- Modal -->
+	          	<div class="myForm">
+	          		<form class="form-horizontal" action="/language/new" method="post" th:object="${userLanguage}" role="form">
+	          		
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="myModal">Meus Idiomas Cadastro</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+								<div class="form-group">
+                                  <label>Idioma</label>
+                                	<select class="form-control" th:field="*{language.id}">
+										<option th:each="language: ${languages}" th:value="${language.id}" th:text="${language.description}"></option>
+									</select>
+                                  
+                                </div>   
+                         
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						        <button type="submit" class="btn btn-primary">Save changes</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</form>
+				</div>
+	          	
+	          	<section id="tb_languages">
+		          	<div class="container-fluid">
+	              		<div class="row">
+	                		<div class="col-lg-12">
+	                  			<div class="card">
+	                  				<div class="card-header d-flex align-items-center">
+	                  					<div class="row col-sm-12">
+										  <div class="col col-md-8">
+										  	<h3 class="h4">Meus Idiomas</h3>	
+										  </div>
+										  <div class="col-6 col-md-4">
+										  	<a th:href="@{/language/new}" class="btn btn-primary" data-toggle="modal" data-target="#myModal"data-toggle="modal" data-target="#myModal">Novo Idioma</a>
+										  </div>
+										</div>
+				                    </div>
+	                  			</div>
+	                  			
+	                  			<div class="container-fluid">
+	                  				<div th:if="${myLanguages.empty}">
+	                  					Nenhum idioma cadastrado.
+	                  				</div>
+	                  			
+					              	<div class="project" th:each="language : ${myLanguages}">
+					                	<div class="row bg-white has-shadow">
+					                  		<div class="left-col col-lg-4 d-flex align-items-center justify-content-between">
+					                    		<div class="project-title d-flex align-items-center">
+						                      		<div class="text">
+						                        		<h3 class="h4" th:text="${language.language.description}"></h3><small>Idioma</small>
+						                      		</div>
+					                    		</div>
+					                  		</div>
+					                  		<div class="right-col col-lg-8 d-flex align-items-center">
+					                  			<!-- Writing -->
+					                    		<div class="comments"><i class="fa fa-pencil"></i>Escrita</div>
+					                    		<div class="project-progress">
+					                      			<div class="progress">
+					                        			<div th:if="${language.writing == T(com.project.myCv.common.Level).BEGINNER}" role="progressbar" style="width: 35%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
+					                      				<div th:if="${language.writing == T(com.project.myCv.common.Level).INTERMEDIATE}" role="progressbar" style="width: 65%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
+					                      				<div th:if="${language.writing == T(com.project.myCv.common.Level).ADVANCED}" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
+					                      			</div>
+					                    		</div>
+					                    		
+					                    		<!-- Reading -->
+					                    		<div class="comments"><i class="fa fa-book"></i>Leitura</div>
+					                    		<div class="project-progress">
+					                      			<div class="progress">
+					                        			<div th:if="${language.reading == T(com.project.myCv.common.Level).BEGINNER}" role="progressbar" style="width: 35%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
+					                      				<div th:if="${language.reading == T(com.project.myCv.common.Level).INTERMEDIATE}" role="progressbar" style="width: 65%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
+					                      				<div th:if="${language.reading == T(com.project.myCv.common.Level).ADVANCED}" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
+					                      			</div>
+					                    		</div>
+					                    		
+					                    		<!-- Conversation -->
+					                    		<div class="comments"><i class="fa fa-comment-o"></i>Conversação</div>
+					                    		<div class="project-progress">
+					                      			<div class="progress">
+					                        			<div th:if="${language.conversation == T(com.project.myCv.common.Level).BEGINNER}" role="progressbar" style="width: 35%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
+					                      				<div th:if="${language.conversation == T(com.project.myCv.common.Level).INTERMEDIATE}" role="progressbar" style="width: 65%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-blue"></div>
+					                      				<div th:if="${language.conversation == T(com.project.myCv.common.Level).ADVANCED}" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
+					                      			</div>
+					                    		</div>
+					                  		</div>
+					                  		
+					                	</div>
+					              	</div>
+					              </div>
+	                  			
+	                  		</div>
+	                  	</div>
+	                </div>
+                </section>
+				
+
+				<!-- Page Footer-->
+				<div th:replace="fragments/footer :: footer"></div>
+
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

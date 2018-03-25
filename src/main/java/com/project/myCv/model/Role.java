@@ -2,6 +2,7 @@ package com.project.myCv.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,6 +17,7 @@ public class Role implements Serializable {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "role_id")
 	private Long id;
 
 	private String role;

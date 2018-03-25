@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.Email;
 import org.springframework.data.annotation.Transient;
@@ -24,6 +26,7 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "user_id")
 	private Long id;
 
 	@Email(message = "Email inválido.")
@@ -37,6 +40,9 @@ public class User implements Serializable {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<UserLanguage> languages;
 
 	/**
 	 * @return the id
@@ -111,6 +117,28 @@ public class User implements Serializable {
 	 */
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	/**
+	 * @return the active
+	 */
+	public Boolean getActive() {
+		return active;
+	}
+
+	/**
+	 * @return the languages
+	 */
+	public Set<UserLanguage> getLanguages() {
+		return languages;
+	}
+
+	/**
+	 * @param languages
+	 *            the languages to set
+	 */
+	public void setLanguages(Set<UserLanguage> languages) {
+		this.languages = languages;
 	}
 
 }

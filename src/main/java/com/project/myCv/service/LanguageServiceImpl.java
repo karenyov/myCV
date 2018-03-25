@@ -1,5 +1,7 @@
 package com.project.myCv.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -61,6 +63,14 @@ public class LanguageServiceImpl implements LanguageService {
 	public Page<Language> findByDescriptionContaining(String search, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return languageRepository.findByDescriptionContaining(search, pageable);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.project.myCv.service.LanguageService#findByActive(java.lang.Boolean)
+	 */
+	@Override
+	public List<Language> findByActive(Boolean active) {
+		return languageRepository.findByActive(active);
 	}
 
 }

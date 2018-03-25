@@ -17,6 +17,7 @@ public class Language implements Serializable {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "language_id")
 	private Long id;
 
 	private String description;
