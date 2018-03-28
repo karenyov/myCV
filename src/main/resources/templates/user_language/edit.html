@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="pt-br" th:replace="fragments/header :: header"></head>
+<meta charset="UTF-8"></meta>
+<body>
+	<div class="page">
+		<div th:replace="fragments/navbar :: navbar"></div>
+      	<div class="page-content d-flex align-items-stretch"> 
+			<div th:replace="fragments/navbar_login :: navbar_login"></div>
+
+			<div class="content-inner">
+				<!-- Page Header-->
+				<header class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">Idiomas</h2>
+					</div>
+				</header>
+				<!-- Breadcrumb-->
+	            <div class="breadcrumb-holder container-fluid">
+	            	<ul class="breadcrumb">
+	              		<li class="breadcrumb-item"><a th:href="@{/dashboard/user}">Dashboard</a></li>
+	              		<li class="breadcrumb-item active"><a th:href="@{/language/}">Meus Idiomas</a></li>
+	            	</ul>
+	          	</div>
+	          	
+	          	<section id="tb_languages">
+		          	<div class="container-fluid">
+	              		<div class="row">
+	                		<div class="col-lg-12">
+	                  			<div class="card">
+	                  				<div class="card-header d-flex align-items-center">
+				                      <h3 class="h4">Meus Idiomas</h3>
+				                    </div>
+				                    <div class="card-body">
+				                    	<form class="form-horizontal" action="/language/edit" method="post" th:object="${userLanguage}" role="form">
+	          								<input type="hidden" th:field="*{id}" />
+	          								
+											<div class="form-group col-md-6">
+					                        	<label class="form-control-label">Idioma</label>
+												<select class="form-control" th:field="*{language.id}">
+													<option th:each="language: ${languages}" th:value="${language.id}" th:text="${language.description}"></option>
+												</select>
+					                        </div>
+					                        
+					                        <div class="form-group col-md-6">
+					                        	<label class="form-control-label"><i class="fa fa-pencil"></i> Escrita </label>
+												<select class="form-control" th:field="*{writing}">
+												   <option th:each="level : ${T(com.project.myCv.common.Level).values()}"
+												          th:value="${level}" 
+												          th:text="${level}">
+												   </option>
+												</select>
+					                        </div>
+					                        
+					                        <div class="form-group col-md-6">
+					                        	<label class="form-control-label"><i class="fa fa-book"></i> Leitura </label>
+												<select class="form-control" th:field="*{reading}">
+													<option th:each="level : ${T(com.project.myCv.common.Level).values()}"
+												          th:value="${level}" 
+												          th:text="${level}">
+												   </option>
+												</select>
+					                        </div>
+					                        
+					                        <div class="form-group col-md-6">
+					                        	<label class="form-control-label"><i class="fa fa-comment-o"></i> Conversação </label>
+												<select class="form-control" th:field="*{conversation}">
+													<option th:each="level : ${T(com.project.myCv.common.Level).values()}"
+												          th:value="${level}" 
+												          th:text="${level}">
+												   </option>
+												</select>
+					                        </div>
+					                        
+					                        <div class="line"></div>
+						                    <div class="form-group row">
+						                        <div class="col-sm-4 offset-sm-3">
+						                            <a href="/language/" class="btn btn-secondary">Cancel</a>
+						                            <button type="submit" class="btn btn-primary">Salvar</button>
+						                         </div>
+						                    </div>
+										</form>
+										<div th:if="${success}" th:text="${success}" class="alert alert-success label-material" role="alert"></div>
+										<div th:if="${error}" th:text="${error}" class="alert alert-danger label-material" role="alert"></div>
+				                	</div>
+	                  			</div>
+					          
+	                  		</div>
+	                  	</div>
+	                </div>
+                </section>
+				
+
+				<!-- Page Footer-->
+				<div th:replace="fragments/footer :: footer"></div>
+
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
